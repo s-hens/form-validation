@@ -7,7 +7,7 @@
     <title>Form Validation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
 </head>
@@ -17,7 +17,7 @@
         <h1>Sign Up</h1>
         <form>
             <fieldset class="country-fieldset">
-                <label for="country">Country</label>
+                <label for="country"><h2>Country</h2></label>
                 <select id="country" name="country" required>
                     <option value="England">England</option>
                     <option value="Northern Ireland">Northern Ireland</option>
@@ -26,26 +26,27 @@
                 </select>
             </fieldset>
             <fieldset class="postcode-fieldset">
-                <label for="postcode">Postcode</label>
+                <label for="postcode"><h2>Postcode</h2></label>
                 <input type="text" id="postcode" name="postcode" pattern="([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})
                 " required>
             </fieldset>
             <fieldset class="email-fieldset">
-                <label for="email">Email</label>
+                <label for="email"><h2>Email</h2></label>
                 <input type="email" id="email" name="email" required>
             </fieldset>
             <fieldset class="password-fieldset">
-                <label for="password">Password</label>
+                <label for="password"><h2>Password</h2></label>
                 <input type="password" id="password" name="password" required>
             </fieldset>
             <fieldset class="confirm-password-fieldset">
-                <label for="confirm-password">Confirm password</label>
+                <label for="confirm-password"><h2>Confirm password</h2></label>
                 <input type="password" id="confirm-password" name="confirm-password" required>
             </fieldset>
             <div class="password-reqs">
-                ● At least 8 characters<br>
-                ● At least 1 uppercase letter<br>
-                ● At least 1 number or symbol<br>
+                <h2>Password requirements</h2>
+                <span>● At least 8 characters</span>
+                <span>● At least 1 uppercase letter</span>
+                <span>● At least 1 number or symbol</span>
             </div>
             <div class="center"><button type="submit">Sign Up</button></div>
         </form>
