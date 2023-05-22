@@ -124,7 +124,7 @@ input:focus, select:focus {
     outline: 1px solid red;
 }
 
-.country-error, .postcode-error, .email-error, .password-error {
+.country-error, .postcode-error, .email-error, .password-error, .error {
     color: red;
     font-weight: 400;
 }

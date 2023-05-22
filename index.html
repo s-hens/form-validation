@@ -40,21 +40,22 @@
             </fieldset>
             <fieldset class="password-fieldset">
                 <label for="password"><h2>Password</h2></label>
-                <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
+                <input type="password" id="password" name="password" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])" required>
                 <span class="material-symbols-outlined visibility">visibility_off</span>
             </fieldset>
             <fieldset class="confirm-password-fieldset">
                 <label for="confirm-password"><h2>Confirm password</h2></label>
-                <input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="20" required>
+                <input type="password" id="confirm-password" name="confirm-password" required>
                 <span class="material-symbols-outlined visibility">visibility_off</span>
                 <span class="password-error" aria-live="polite"></span>
             </fieldset>
             <div class="password-reqs">
                 <h2>Password requirements</h2>
                 <ul>
-                    <li>Between 8 - 20 characters</li>
-                    <li>At least 1 uppercase letter</li>
-                    <li>At least 1 number</li>
+                    <li class="length">Between 8 - 20 characters</li>
+                    <li class="uppercase">At least 1 uppercase letter</li>
+                    <li class="lowercase">At least 1 lowercase letter</li>
+                    <li class="number">At least 1 number</li>
                 </ul>
             </div>
             <div class="center"><button type="submit">Sign Up</button></div>

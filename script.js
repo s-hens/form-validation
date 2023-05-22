@@ -74,3 +74,68 @@ function validateEmail(e) {
         email.classList.remove("invalid");
     }
 }
+
+// Password
+const password = document.getElementById("password");
+const passwordErrorLength = document.querySelector(".length");
+const passwordErrorUppercase = document.querySelector(".uppercase");
+const passwordErrorLowercase = document.querySelector(".lowercase");
+const passwordErrorNumber = document.querySelector(".number");
+
+const regexUppercase = /[A-Z]/;
+const regexLowercase = /[a-z]/;
+const regexNumber = /\d/;
+
+password.addEventListener("change", validatePassword);
+password.addEventListener("input", validatePassword);
+password.addEventListener("focusout", validatePassword);
+
+function validatePassword(e) {
+    if (e.type == "change" || e.type == "focusout") {
+        if (password.validity.tooLong || password.validity.tooShort || password.validity.valueMissing) { // 8-20 chars
+            passwordErrorLength.classList.add("error");
+            password.classList.add("invalid");
+        }
+        if (regexUppercase.test(password.value) == false) { // Contains >0 uppercase letter(s)
+            passwordErrorUppercase.classList.add("error");
+            password.classList.add("invalid");
+        }
+        if (regexLowercase.test(password.value) == false) { // Contains >0 lowercase letter(s)
+            passwordErrorLowercase.classList.add("error");
+            password.classList.add("invalid");
+        }
+        if (regexNumber.test(password.value) == false) { // Contains >0 number(s)
+            passwordErrorNumber.classList.add("error");
+            password.classList.add("invalid");
+        }
+    } else if (e.type == "input") {
+        if (password.validity.valid == true) {
+            console.log("I am valid");
+            password.classList.remove("invalid");
+        }
+        if (!password.validity.tooLong && !password.validity.tooShort) { // 8-20 chars
+            passwordErrorLength.classList.remove("error");
+        }
+        if (regexUppercase.test(password.value) == true) { // Contains >0 uppercase letter(s)
+            passwordErrorUppercase.classList.remove("error");
+        }
+        if (regexLowercase.test(password.value) == true) { // Contains >0 lowercase letter(s)
+            passwordErrorLowercase.classList.remove("error");
+        }
+        if (regexNumber.test(password.value) == true) { // Contains >0 number(s)
+            passwordErrorNumber.classList.remove("error");
+        }
+    }
+}
+
+
+/*
+    if (e.type == "change" && !password.validity.patternMismatch ||
+        e.type == "focusout" && password.validity.valueMissing) {
+        //emailError.innerText = "Please enter an email address.";
+        password.classList.add("invalid");
+    } else if (e.type == "input" && password.validity.patternMismatch) {
+        //emailError.innerText = "";
+        password.classList.remove("invalid");
+    }
+*/
