@@ -21,6 +21,14 @@ main {
     box-shadow: 2px 2px 5px #D8D8D8;
 }
 
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 40;
+}
+
 h1 {
     margin: 0;
     font-size: 1.75em;
@@ -31,6 +39,17 @@ h2 {
     font-size: 1em;
     font-weight: 600;
     margin: 0;
+}
+
+ul {
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0;
+    list-style: inside;
+}
+
+li::marker {
+    content: "● ";
 }
 
 /* Form layout */
@@ -60,11 +79,6 @@ form {
     grid-area: 4 / 2 / 6 / 3;
 }
 
-.password-reqs span {
-    font-size: 0.9em;
-    display: block;
-}
-
 fieldset {
     position: relative;
     vertical-align: center;
@@ -74,6 +88,10 @@ fieldset {
 
 fieldset:first-of-type {
     margin-top: 30px;
+}
+
+fieldset::after {
+    color: red;
 }
 
 input, select {
@@ -97,6 +115,18 @@ select {
 input:focus, select:focus {
     border-color: #0F0F0F;
     outline: 1px solid #0F0F0F;
+}
+
+/* Toggle password visibility */
+
+.visibility {
+    position: absolute;
+    left: calc(100% - 24px - 2px);
+    top: calc(50% + 2px);
+}
+
+.visibility:hover {
+    cursor: pointer;
 }
 
 /* Sign Up Button */
