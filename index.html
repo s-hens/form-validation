@@ -16,7 +16,7 @@
 
     <main>
         <h1>Sign Up</h1>
-        <form>
+        <form novalidate>
             <fieldset class="country-fieldset">
                 <label for="country"><h2>Country</h2></label>
                 <select id="country" name="country" required>
@@ -26,32 +26,35 @@
                     <option value="Scotland">Scotland</option>
                     <option value="Wales">Wales</option>
                 </select>
+                <span class="country-error" aria-live="polite"></span>
             </fieldset>
             <fieldset class="postcode-fieldset">
                 <label for="postcode"><h2>Postcode</h2></label>
-                <input type="text" id="postcode" name="postcode" pattern="([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})
-                " required>
+                <input type="text" id="postcode" name="postcode" pattern="([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})" required>
+                <span class="postcode-error" aria-live="polite"></span>
             </fieldset>
             <fieldset class="email-fieldset">
                 <label for="email"><h2>Email</h2></label>
                 <input type="email" id="email" name="email" required>
+                <span class="email-error" aria-live="polite"></span>
             </fieldset>
             <fieldset class="password-fieldset">
                 <label for="password"><h2>Password</h2></label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" minlength="8" maxlength="20" required>
                 <span class="material-symbols-outlined visibility">visibility_off</span>
             </fieldset>
             <fieldset class="confirm-password-fieldset">
                 <label for="confirm-password"><h2>Confirm password</h2></label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
+                <input type="password" id="confirm-password" name="confirm-password" minlength="8" maxlength="20" required>
                 <span class="material-symbols-outlined visibility">visibility_off</span>
+                <span class="password-error" aria-live="polite"></span>
             </fieldset>
             <div class="password-reqs">
                 <h2>Password requirements</h2>
                 <ul>
-                    <li>At least 8 characters</li>
+                    <li>Between 8 - 20 characters</li>
                     <li>At least 1 uppercase letter</li>
-                    <li>At least 1 number or symbol</li>
+                    <li>At least 1 number</li>
                 </ul>
             </div>
             <div class="center"><button type="submit">Sign Up</button></div>

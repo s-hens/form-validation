@@ -90,10 +90,6 @@ fieldset:first-of-type {
     margin-top: 30px;
 }
 
-fieldset::after {
-    color: red;
-}
-
 input, select {
     border: 1px solid #8C8C8C;
     color: #0F0F0F;
@@ -115,6 +111,22 @@ select {
 input:focus, select:focus {
     border-color: #0F0F0F;
     outline: 1px solid #0F0F0F;
+}
+
+/* Error messages */
+
+.invalid {
+    border-color: red;
+}
+
+.invalid:focus {
+    border-color: red;
+    outline: 1px solid red;
+}
+
+.country-error, .postcode-error, .email-error, .password-error {
+    color: red;
+    font-weight: 400;
 }
 
 /* Toggle password visibility */
