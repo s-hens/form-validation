@@ -47,11 +47,12 @@ postcode.addEventListener("input", validatePostcode);
 postcode.addEventListener("focusout", validatePostcode);
 
 function validatePostcode(e) {
-    if (e.type == "change" && postcode.validity.patternMismatch ||
-        e.type == "focusout" && postcode.validity.valueMissing) {
+    if (e.type == "change" && !postcode.validity.valid ||
+        e.type == "focusout" && !postcode.validity.valid ||
+        e.type == "submit" && !postcode.validity.valid) {
         postcodeError.innerText = "Please enter a valid UK postcode. Example: SW1A 1AA";
         postcode.classList.add("invalid");
-    } else if (e.type == "input" && !postcode.validity.patternMismatch) {
+    } else if (postcode.validity.valid) {
         postcodeError.innerText = "";
         postcode.classList.remove("invalid");
     }
@@ -67,10 +68,16 @@ email.addEventListener("focusout", validateEmail);
 
 function validateEmail(e) {
     if (e.type == "change" && email.validity.typeMismatch ||
-        e.type == "focusout" && email.validity.valueMissing) {
+        e.type == "focusout" && email.validity.typeMismatch ||
+        e.type == "submit" && email.validity.typeMismatch) {
+        emailError.innerText = "That's not an email address, you cheeky monkey.";
+        email.classList.add("invalid");
+    } else if (e.type == "change" && email.validity.valueMissing ||
+        e.type == "focusout" && email.validity.valueMissing ||
+        e.type == "submit" && email.validity.valueMissing) {
         emailError.innerText = "Please enter an email address.";
         email.classList.add("invalid");
-    } else if (e.type == "input" && !email.validity.typeMismatch) {
+    } else if (email.validity.valid) {
         emailError.innerText = "";
         email.classList.remove("invalid");
     }
@@ -92,7 +99,9 @@ password.addEventListener("input", validatePassword);
 password.addEventListener("focusout", validatePassword);
 
 function validatePassword(e) {
-    if (e.type == "change" || e.type == "focusout") {
+    if (e.type == "change" ||
+        e.type == "focusout" ||
+        e.type == "submit") {
         if (password.validity.tooLong ||
             password.validity.tooShort ||
             password.validity.valueMissing) { // Not 8-20 chars
@@ -143,14 +152,33 @@ password.addEventListener("focusout", matchPasswords);
 
 function matchPasswords(e) {
     if (e.target.id == "confirm-password" ||
-        e.target.id == "password" && confirmPassword.value) {
-        if (e.type == "change" && confirmPassword.value != password.value ||
-        e.type == "focusout" && confirmPassword.value != password.value) {
-        confirmPasswordError.innerText = "Passwords must match.";
-        confirmPassword.classList.add("invalid");
-        } else if (e.type == "input" && confirmPassword.value == password.value) {
-            confirmPasswordError.innerText = "";
-            confirmPassword.classList.remove("invalid");
-        }
+        e.target.id == "password" && confirmPassword.value ||
+        e.target.id == "sign-up") {
+            if (e.type == "change" && confirmPassword.value != password.value ||
+                e.type == "focusout" && confirmPassword.value != password.value ||
+                e.type == "submit" && confirmPassword.value != password.value) {
+                confirmPasswordError.innerText = "Passwords must match.";
+                confirmPassword.classList.add("invalid");
+            } else if (confirmPassword.value == password.value) {
+                confirmPasswordError.innerText = "";
+                confirmPassword.classList.remove("invalid");
+            }
     }
+}
+
+//---------------------//
+// Submit & check form //
+//---------------------//
+
+const form = document.getElementById("sign-up");
+
+form.addEventListener("submit", validateForm);
+
+function validateForm(e) {
+    event.preventDefault();
+    validateCountry();
+    validatePostcode(e);
+    validateEmail(e);
+    validatePassword(e);
+    matchPasswords(e);
 }
