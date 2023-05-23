@@ -1,6 +1,7 @@
 //--------------------//
 // Show/hide password //
 //--------------------//
+
 document.querySelectorAll(".visibility").forEach(button => {
     button.addEventListener("click", togglePasswordVisibility);
 })
@@ -92,7 +93,9 @@ password.addEventListener("focusout", validatePassword);
 
 function validatePassword(e) {
     if (e.type == "change" || e.type == "focusout") {
-        if (password.validity.tooLong || password.validity.tooShort || password.validity.valueMissing) { // Not 8-20 chars
+        if (password.validity.tooLong ||
+            password.validity.tooShort ||
+            password.validity.valueMissing) { // Not 8-20 chars
             passwordErrorLength.classList.add("error");
             password.classList.add("invalid");
         }
@@ -123,6 +126,31 @@ function validatePassword(e) {
         }
         if (password.validity.valid) { // Complete match
             password.classList.remove("invalid");
+        }
+    }
+}
+
+// Confirm password
+const confirmPassword = document.getElementById("confirm-password");
+const confirmPasswordError = document.querySelector(".confirm-password-error");
+
+confirmPassword.addEventListener("change", matchPasswords);
+confirmPassword.addEventListener("input", matchPasswords);
+confirmPassword.addEventListener("focusout", matchPasswords);
+password.addEventListener("change", matchPasswords);
+password.addEventListener("input", matchPasswords);
+password.addEventListener("focusout", matchPasswords);
+
+function matchPasswords(e) {
+    if (e.target.id == "confirm-password" ||
+        e.target.id == "password" && confirmPassword.value) {
+        if (e.type == "change" && confirmPassword.value != password.value ||
+        e.type == "focusout" && confirmPassword.value != password.value) {
+        confirmPasswordError.innerText = "Passwords must match.";
+        confirmPassword.classList.add("invalid");
+        } else if (e.type == "input" && confirmPassword.value == password.value) {
+            confirmPasswordError.innerText = "";
+            confirmPassword.classList.remove("invalid");
         }
     }
 }

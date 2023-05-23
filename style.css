@@ -124,7 +124,7 @@ input:focus, select:focus {
     outline: 1px solid red;
 }
 
-.country-error, .postcode-error, .email-error, .password-error, .error {
+.country-error, .postcode-error, .email-error, .confirm-password-error, .error {
     color: red;
     font-weight: 400;
 }
@@ -134,7 +134,7 @@ input:focus, select:focus {
 .visibility {
     position: absolute;
     left: calc(100% - 24px - 2px);
-    top: calc(50% + 2px);
+    top: calc(1.2em + 2px);
 }
 
 .visibility:hover {
