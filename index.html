@@ -40,7 +40,7 @@
             </fieldset>
             <fieldset class="password-fieldset">
                 <label for="password"><h2>Password</h2></label>
-                <input type="password" id="password" name="password" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])" required>
+                <input type="password" id="password" name="password" minlength="8" maxlength="20" pattern="(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$" required>
                 <span class="material-symbols-outlined visibility">visibility_off</span>
             </fieldset>
             <fieldset class="confirm-password-fieldset">

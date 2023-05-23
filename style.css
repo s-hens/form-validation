@@ -159,6 +159,7 @@ button {
     font-weight: 600;
     padding: 10px 30px;
     border-radius: 30px;
+    transition: background-color 100ms;
 }
 
 button:hover {
