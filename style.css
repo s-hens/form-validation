@@ -166,3 +166,12 @@ button:hover {
     background-color: #1156B2;
     cursor: pointer;
 }
+
+/* Link back to GitHub */
+
+.link-back {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    height: 24px;
+}

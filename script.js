@@ -70,7 +70,7 @@ function validateEmail(e) {
     if (e.type == "change" && email.validity.typeMismatch ||
         e.type == "focusout" && email.validity.typeMismatch ||
         e.type == "submit" && email.validity.typeMismatch) {
-        emailError.innerText = "That's not an email address, you cheeky monkey.";
+        emailError.innerText = "Please enter a valid email address. Example: catlover@aol.net";
         email.classList.add("invalid");
     } else if (e.type == "change" && email.validity.valueMissing ||
         e.type == "focusout" && email.validity.valueMissing ||
@@ -181,4 +181,14 @@ function validateForm(e) {
     validateEmail(e);
     validatePassword(e);
     matchPasswords(e);
+    if (country.validity.valid &&
+        postcode.validity.valid &&
+        email.validity.valid &&
+        password.validity.valid &&
+        confirmPassword.validity.valid) {
+            confetti({
+                particleCount: 200,
+                spread: 100
+              });
+        }
 }
